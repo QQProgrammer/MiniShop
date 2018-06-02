@@ -1,0 +1,4 @@
+<view>
+  <button class='shelf' bindtap="shelf">货架码</button>
+  <button class='goods' bindtap="goods">商品码</button>
+</view>

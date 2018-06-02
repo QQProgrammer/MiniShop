@@ -1,0 +1,58 @@
+<view class='cart'>
+
+  <!-- 头部  -->
+  <view class='cartHead' wx:hide="{{headHide}}">
+    <view class='cartHeadBox' bindtap="toAdd">
+      <text style='float:left'>{{smsOrder}}</text>
+      <text style='float:right;color:#f89a4b'>去凑单>></text>
+    </view>
+  </view>
+  <view class="cart-box">
+    <!-- wx:for 渲染购物车列表 -->
+    <view wx:for="{{carts}}" class='cartFoods' wx:for-index="index" wx:key="id">
+      <!-- 选择按钮 -->
+       <view class='cartFoodsItem'> 
+        <!-- wx:if 是否选择显示不同图标 -->
+         <icon wx:if="{{item.selected}}" type="success" color="red" bindtap="selectList" size='16' data-index="{{index}}" />
+        <icon wx:else type="circle" bindtap="selectList" size='16' data-index="{{index}}" /> 
+       </view> 
+      <!-- 图片部分 -->
+       <view class='cartFoodsItem'>
+          <image class="cart-thumb" src="{{item.goodsPicsInfo}}"></image>
+      </view> 
+      <!-- 文字描述部分 -->
+       <view class='cartFoodsItem'>
+        <text>{{item.title}}</text>
+        <text>￥{{item.price}}</text>
+      </view> 
+      <!-- 增加减少数量按钮 -->
+       <view class='cartFoodsItem'>
+        <text bindtap="minusCount" data-index="{{index}}" class='countStyle minusCountStyle'>-</text>
+        <text>{{item.quantity}}</text>
+        <text bindtap="addCount" data-index="{{index}}"  class='countStyle'>+</text>
+      </view> 
+       <!-- 删除按钮  -->
+      <!-- <text bindtap="deleteList" data-index="{{index}}"> × </text> -->
+    </view>  
+  </view>
+  <!-- 扫一扫添加商品 -->
+  <view class='payBtnBox' wx:if='{{typeCart==2}}' bindtap="toScan">
+    <view class='payBtn'>
+      <!-- 扫一扫添加商品 -->
+      <image src='/static/images/scanAdd.png'></image>
+    </view>
+  </view>
+  <!-- 下部 -->
+  <view class='cartTab'>
+    <view class='cartTabitem'>
+      <icon wx:if="{{selectAllStatus}}" type="success_circle" color="black" bindtap="selectAll" size='16' />
+      <icon wx:else type="circle" color="black" bindtap="selectAll" size='16' />
+      <text>全选</text>
+      
+    </view>
+    <view class='cartTabitem'>
+      <text><text style='font-size:24rpx;color:black'>应付</text>￥{{totalPrice}}</text>
+    </view>
+    <view class='cartTabitem' bindtap="toSubmit">去结算</view>
+  </view>
+</view>

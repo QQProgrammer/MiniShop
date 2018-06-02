@@ -1,0 +1,152 @@
+.cartHead {
+  height: 100rpx;
+  background: linear-gradient(#f4a24b, #f1c99e);
+  font-size: 24rpx;
+  padding-top: 30rpx;
+}
+.cart-box{
+  background: linear-gradient(#f1c99e, #fff, #f0eff5, #f0eff5,#f0eff5);
+}
+.cartHeadBox {
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 630rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  margin: 0 auto;
+  padding: 0 30rpx;
+}
+/* 商品展示 */
+.cartFoods {
+  height: 180rpx;
+  width: 690rpx;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  margin-bottom: 10rpx;
+  display: flex;
+}
+
+.cartFoods .cartFoodsItem:nth-child(1){
+  flex:1;
+  line-height: 180rpx;
+  text-align: center;
+  padding-left: 30rpx;
+}
+.cartFoods .cartFoodsItem:nth-child(2){
+  flex:2;
+  padding: 40rpx 10rpx;
+  width: 100rpx;
+  height: 100rpx;
+}
+.cartFoods .cartFoodsItem:nth-child(2) image{
+  width: 100rpx;
+  height: 100rpx;
+   background-color: #f4a24b
+}
+.cartFoods .cartFoodsItem:nth-child(3){
+  flex:3;
+  font-size: 20rpx;
+  padding-top: 50rpx;
+}
+.cartFoods .cartFoodsItem:nth-child(3) text{
+  display: block;
+  margin-bottom: 20rpx;
+}
+.cartFoods .cartFoodsItem:nth-child(4){
+  flex:2;
+  text-align: right;
+  padding-right: 20rpx;
+  line-height: 180rpx;
+}
+.countStyle{
+  display: inline-block;
+  height: 34rpx;
+  line-height: 34rpx;
+  width: 34rpx;
+  background-color: #f4a34b;
+  border-radius: 50%;
+  margin: 0 10rpx;
+  text-align: center;
+  color: white;
+}
+.minusCountStyle{
+  line-height: 32rpx;
+   background-color: white;
+   border: 1rpx solid black;
+   color: black;
+   box-sizing: border-box;
+}
+
+/* 底部 */
+
+.cartTab {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 95rpx;
+  line-height: 95rpx;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: white;
+  display: flex;
+  color: black;
+  font-size: 26rpx;
+}
+
+.cartTab .cartTabitem {
+  flex: 1;
+}
+
+.cartTab .cartTabitem:nth-child(1) {
+  padding-left: 30rpx;
+  position: relative;
+  line-height: 95rpx;
+  color: black;
+}
+.cartTab .cartTabitem:nth-child(1) icon {
+  margin-top: 10rpx;
+}
+.cartTab .cartTabitem:nth-child(1) text {
+  margin-left: 20rpx;
+}
+
+.cartNum {
+  height: 35rpx;
+  width: 35rpx;
+  border-radius: 50%;
+  background-color: #f23a29;
+  position: absolute;
+  top: 17rpx;
+  left: 76rpx;
+  text-align: center;
+  line-height: 35rpx;
+}
+
+.cartTab .cartTabitem:nth-child(2) {
+  text-align: right;
+  color: red;
+  padding-right: 30rpx;
+  font-weight: 700;
+}
+
+.cartTab .cartTabitem:nth-child(3) {
+  background-color: #f4a34b;
+  text-align: center;
+  color: white;
+}
+/* 扫一扫继续添加商品 */
+.payBtn image{
+  height: 124rpx;
+  width: 724rpx;
+  /* border-radius: 80rpx; */
+  /* position: fixed; */
+  /* top:570rpx; */
+  /* left:30rpx; */
+  /* color: white; */
+  /* line-height: 90rpx; */
+  /* text-align: center; */
+  /* font-size: 26rpx; */
+  /* background: linear-gradient(left, red , blue); */
+  /* background: linear-gradient(#f4a34b, #f5c64b); */
+}

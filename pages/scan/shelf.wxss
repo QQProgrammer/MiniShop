@@ -1,0 +1,175 @@
+/**分类栏**/
+
+.classify {
+  padding-bottom: 30rpx;
+}
+
+.left-navbar {
+  position: absolute;
+  left: 0;
+  width: 140rpx;
+  height: 90%;
+  background-color: #f0eff5;
+  font-size: 24rpx;
+}
+
+.left-navbar view {
+  height: 85rpx;
+  line-height: 85rpx;
+  text-align: center;
+}
+
+.active {
+  background-color: #fff;
+  font-size: 24rpx;
+}
+
+#right {
+  position: absolute;
+  right: 0;
+  width: 75%;
+  height: 90%;
+  background-color: white;
+}
+
+.goods-banner {
+  background: linear-gradient(#f4a24b, #f1c99e);
+  height: 100rpx;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 30rpx;
+}
+
+.img-banner {
+  margin: 0 auto;
+  background-color: white;
+  width: 690rpx;
+  height: 83rpx;
+  border-radius: 10rpx;
+  text-align: left;
+  line-height: 83rpx;
+  font-size: 24rpx;
+}
+
+.img-banner text {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.img-banner image {
+  margin-left: 10rpx;
+  height: 20rpx;
+  width: 20rpx;
+  display: inline-block;
+}
+
+.goods-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+
+.goods-title {
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 10rpx;
+  height: 180rpx;
+}
+
+.goods {
+  font-size: 14px;
+  margin: 30rpx 0 0 30rpx;
+  display: flex;
+  position: relative;
+}
+
+.goodsItem {
+  float: left;
+}
+
+.goods .goodsItem:nth-child(2) {
+  margin-left: 30rpx;
+  width: 300rpx;
+}
+
+.goods .goodsItem:nth-child(2) text {
+  display: block;
+}
+
+.goodsPrice {
+  margin-top: 20rpx;
+}
+
+.goods .addIconItem {
+  width: 100rpx;
+  text-align: right;
+  line-height: 180rpx;
+  position: absolute;
+  right: -90rpx;
+  bottom: 10rpx;
+}
+
+.addIcon {
+  width: 35rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  background-color: #f4a24b;
+  color: white;
+  border-radius: 50%;
+}
+
+.goodsImg {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.cartTab {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 95rpx;
+  line-height: 95rpx;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  color: white;
+  font-size: 28rpx;
+}
+
+.cartTab .cartTabitem {
+  flex: 1;
+}
+.cartTab .cartTabitem:nth-child(1) {
+ padding-top: 20rpx;
+  padding-left: 30rpx;
+  position: relative
+}
+.cartTab .cartTabitem:nth-child(1) image{
+  width: 60rpx;
+  height: 65rpx;
+}
+.cartNum{
+  height: 35rpx;
+  width: 35rpx;
+  border-radius: 50%;
+  background-color: #f23a29;
+  position: absolute;
+  top:17rpx;
+  left:76rpx;
+  text-align: center;
+  line-height: 35rpx;
+}
+.cartTab .cartTabitem:nth-child(2) {
+  text-align: right;
+  color: red;
+  padding-right: 30rpx;
+  font-weight: 700;
+}
+
+.cartTab .cartTabitem:nth-child(3) {
+  background-color: #f4a34b;
+  text-align: center;
+}

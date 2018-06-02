@@ -1,0 +1,151 @@
+/* pages/scan/paySuc.wxss */
+
+.paySuc {
+  position: relative;
+}
+
+.paySucHead {
+  height: 700rpx;
+  text-align: center;
+  background-color: white;
+  font-size: 24rpx;
+  padding-top: 65rpx;
+}
+
+.paySucHead text {
+  display: block;
+}
+
+.paySucHead text:nth-child(1) {
+  margin: 25rpx 0 40rpx 0;
+  font-size: 30rpx 0 50rpx 0;
+}
+
+.paySucHead text:nth-child(2) {
+  margin-top: 40rpx;
+}
+
+.paySucHead text:nth-child(3) {
+  margin-top: 25rpx;
+}
+
+.paySucHead text:nth-child(4) {
+  margin-top: 20rpx;
+}
+
+.ermBox {
+  height: 230rpx;
+  width: 230rpx;
+  margin: 0 auto;
+}
+
+/* 优惠券 */
+
+.paySumYhj {
+  margin-top: 10rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background-color: white;
+  padding: 0 30rpx;
+}
+
+.paySumYhj text {
+  font-size: 30rpx;
+}
+
+.paySumYhj text:nth-child(1) {
+  float: left;
+  color: black;
+}
+
+.paySumYhj text:nth-child(2) {
+  float: right;
+  color: #faa43e;
+}
+
+/* 广告 */
+
+.paySucImg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 260rpx;
+  width: 750rpx;
+}
+
+.cover {
+  height: 1244rpx;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.modal {
+  position: absolute;
+  top: 150rpx;
+  left: 70rpx;
+  height: 520rpx;
+  width: 610rpx;
+  background-color: white;
+  border-radius: 10rpx;
+  z-index: 3;
+}
+
+.modalHeader {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  border-bottom: 1rpx solid #EBEBEB;
+}
+
+.modalHeade text {
+  font-size: 36rpx;
+}
+
+.modalCont {
+  height: 330rpx;
+}
+
+.modalFoot {
+  height: 90rpx;
+  line-height: 90rpx;
+  border-top: 1rpx solid EBEBEB;
+}
+
+.modalFoot view {
+  display: inline-block;
+  width: 305rpx;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.modalFoot view:nth-child(1) {
+  color: black;
+}
+
+.modalFoot view:nth-child(2) {
+  color: #faa43e;
+}
+
+.modalCont {
+  padding: 0 30rpx;
+}
+
+.modalCont view:nth-child(1) {
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #323232;
+  border-bottom: 1rpx solid EBEBEB;
+  font-size: 30rpx;
+}
+
+.modalCont text:nth-child(2) {
+  height: 230rpx;
+}
+
+.modalCont text:nth-child(2) text {
+  display: block;
+  font-size: 24rpx;
+  color: #8e8e8e;
+}

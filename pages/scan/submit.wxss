@@ -1,0 +1,103 @@
+/* 商品展示 */
+
+.cartFoods {
+  border-bottom: 1rpx solid #eee;
+  height: 130rpx;
+  line-height: 130rpx;
+  background-color: white;
+  display: flex;
+  font-size: 24rpx;
+  padding: 0 30rpx;
+}
+
+.cartFoods .cartFoodsItem:nth-child(1) {
+  flex: 1;
+  line-height: 180rpx;
+  text-align: center;
+  padding: 15rpx 30rpx 15rpx 0;
+}
+
+.cartFoods .cartFoodsItem:nth-child(1) image {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #f4a24b;
+}
+
+.cartFoods .cartFoodsItem:nth-child(2) {
+  /* flex:3; */
+  width: 400rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cartFoods .cartFoodsItem:nth-child(3) {
+  flex: 1;
+}
+
+.cartFoods .cartFoodsItem:nth-child(4) {
+  flex: 1;
+  text-align: right;
+}
+
+/* 优惠券 */
+
+.hasCoupon {
+  margin-top: 20rpx;
+  height: 90rpx;
+  background-color: white;
+  overflow: hidden;
+  font-size: 28rpx;
+  line-height: 90rpx;
+  padding: 0 30rpx;
+}
+
+.hasCoupon text:nth-child(2) {
+  color: #949494;
+  font-size: 20rpx;
+}
+
+/* 小计 */
+
+.priceAll {
+  background-color: white;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: right;
+  padding-right: 30rpx;
+  font-size: 28rpx;
+}
+
+/* 底部 */
+
+.cartTab {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 95rpx;
+  line-height: 95rpx;
+  width: 100%;
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-color: white;
+  display: flex;
+  color: black;
+  font-size: 26rpx;
+}
+
+.cartTab .cartTabitem {
+  flex: 1;
+}
+
+.cartTab .cartTabitem:nth-child(1) {
+  text-align: left;
+  color: red;
+  padding-left: 30rpx;
+  font-weight: 700;
+  font-size: 28rpx;
+}
+
+.cartTab .toSubmit {
+  background-color: #f4a34b;
+  text-align: center;
+  color: white;
+  width: 235rpx !important;
+}

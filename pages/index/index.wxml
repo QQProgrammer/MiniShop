@@ -1,0 +1,83 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 遮罩层 -->
+  <view class='modal-box' wx:if="{{isCover}}"></view>
+  <!-- 注册弹框 -->
+  <view class="modal-body" wx:if="{{!userTel}}">
+    <view class='modal_title'>
+      <text>注册</text>
+      <view class="close" bindtap="close">x</view>
+    </view>
+    <form class="modal-content">
+      <view class="itemView">
+        <input class="input" maxlength="11" name="userNumber" type="number" bindinput="userNumberInput" placeholder="请输入手机号" placeholder-class="placeholder" />
+      </view>
+      <view class="itemView">
+        <input class="input" bindinput="userCodeInput" name="userCode" placeholder="请输入验证码" placeholder-class="placeholder" />
+        <view class='sendCode' disabled='{{disabled}}' bindtap="sendCode">{{sendCodeMsg}}</view>
+      </view>
+      <view class="itemView">
+        <button class="knowBtn input" bindtap="makeSure">确定</button>
+      </view>
+    </form>
+
+  </view>
+  <!-- 首部 -->
+  <view class='indexhead'>
+    <view class='indexheaduser'>
+      <view class='index_add' bindtap="getLocation">
+        <!-- <text>点击定位</text>
+        <image src='/static/images/index_addre.png'></image> -->
+      </view>
+      <view class='index_user' bindtap="toast">
+        <image src='/static/images/index_icon.png'></image>
+      </view>
+    </view>
+    <view class='indexhead_banner'>
+      <view style='padding:0 30rpx'>
+        <!-- 轮播图 -->
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}} " circular="true" style='height:240rpx'>
+          <block wx:for="{{imgUrlsBanner}}" wx:key="{{item.id}}">
+            <swiper-item>
+              <image style='height:240rpx;border-radius:20rpx' src="{{item.image}}" bindtap="toAdsense" data-url='{{item.url}}' class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+        <!-- <image style='height:240rpx' src='/static/images/banner.png'></image> -->
+      </view>
+    </view>
+  </view>
+  <!-- 跳转链接 -->
+  <view class='indexicon'>
+    <view bindtap="goToRecharge " class='indexhead_icon'>
+      <image src='/static/images/indexhead_icon1.png'></image>
+    </view>
+    <view bindtap="goToShop " class='indexhead_icon'>
+      <image src='/static/images/indexhead_icon2.png'></image>
+    </view>
+    <view bindtap="goToFeedback " class='indexhead_icon'>
+      <image src='/static/images/indexhead_icon3.png'></image>
+    </view>
+  </view>
+  <!-- 相关推荐 -->
+  <view class='indexact'>
+    <view class='indexact_title_box'>
+      <view class='indexact_title'>
+        <text style='float:left'>◆</text>
+        <text>相关推荐</text>
+        <text style='float:right'>◆</text>
+      </view>
+    </view>
+    <view class='indexact_list'>
+      <block wx:for="{{imgUrlsAct}}" wx:key="{{item.index}}">
+        <view class='imgacturl'>
+          <image style='height:240rpx;border-radius:20rpx' src="{{item.image}}" class="slide-image" bindtap="toAdsense" data-url='{{item.url}}' />
+        </view>
+      </block>
+    </view>
+  </view>
+  <!-- 扫一扫 -->
+  <view class='indexscan' bindtap="indexScan">
+    <image src='/static/images/btn.png'></image>
+  </view>
+</view>

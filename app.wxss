@@ -1,0 +1,13 @@
+/**app.wxss**/
+ /* @import "common/common.wxss";  */
+page{
+  box-sizing: border-box;
+  background-color:#EFEEF4; 
+  font-family: 微软雅黑；
+}
+image{
+  width: 100%;
+  height: 100%;
+}
+
+

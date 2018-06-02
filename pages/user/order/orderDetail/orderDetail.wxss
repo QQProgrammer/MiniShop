@@ -1,0 +1,108 @@
+.orderDetail{
+  background-color: #f0eff5;
+}
+.one{
+  height: 224rpx;
+  overflow: hidden;
+}
+.orderDetail_one{
+  height: 214rpx;
+  width: 100%;
+  margin: 0 auto;
+  background: -webkit-linear-gradient(bottom, #f4a24c,#eeedf2); /* Safari 5.1 - 6 */
+  background: -o-linear-gradient(ribottomght, #f4a24c,#eeedf2); /* Opera 11.1 - 12*/
+  background: -moz-linear-gradient(ribottomght, #f4a24c,#eeedf2); /* Firefox 3.6 - 15*/
+  background: linear-gradient(to bottom, #f4a24c, #eeedf2); /* 标准的语法 */
+}
+.one_top{
+  width: 690rpx;
+  height: 222rpx;
+  background:#ffffff;
+  margin: 0 auto;
+  border-radius:15rpx;
+  text-align: center 
+}
+.one_top .top_title{
+  text-align: center;
+  font-size: 30rpx;
+  padding-top: 40rpx; 
+  display: block;
+  margin: 0 auto;
+}
+.one_top .orderBtn{
+  height: 54rpx;
+  line-height: 54rpx;
+  width: 140rpx;
+  font-size:22rpx; 
+  text-align: center;
+  border: 1rpx solid black;
+  border-radius:30rpx; 
+  float: left;
+  margin-top: 49rpx;
+}
+.two{
+  background:#ffffff;
+  width: 690rpx;
+  margin: 9rpx auto;
+  overflow: auto;
+  border-radius:15rpx; 
+  /* height: 100rpx; */
+  
+}
+.Item{
+  overflow: auto;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+.Title{
+  font-size: 29rpx;
+  display: block;
+  margin-left: 30rpx;
+  margin-bottom: 45rpx;
+  margin-top: 35rpx; 
+  width: 90%;
+  border-bottom: 1rpx solid #f0eff5;
+  padding-bottom: 15rpx
+}
+.Item .productImg{
+  width: 71rpx; 
+  display: block;
+  float: left;
+  margin-left:40rpx; 
+}
+.Item .productName{
+  display: block; 
+  float: left; 
+  margin-left:40rpx; 
+  width: 200rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow : ellipsis;
+  font-size: 26rpx;
+}
+.Item .productCunt{
+  display: block; 
+  float: right; 
+  width: 54rpx;
+  font-size: 26rpx;
+  margin-right: 110rpx;
+}
+.Item .productPrice{
+   display: block; 
+   float: right;
+   width: 107rpx;
+   text-align: right;
+   font-size: 26rpx;
+   margin-right: 30rpx;
+}
+.three{
+  background:#ffffff;
+  width: 690rpx;
+  margin: 0 auto;
+  overflow: auto;
+  border-radius:15rpx; 
+  margin-bottom: 20rpx;
+  /* height: 100rpx; */
+}

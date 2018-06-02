@@ -1,0 +1,12 @@
+<view class='pay'>
+  <view class='payHead'>
+    <text>确认付款（元）</text>
+    <text>{{payMoney}}</text>
+    <text>剩余支付时间 <text>{{clock}}</text> </text>
+  </view>
+  <view class='payBtnBox' bindtap="toPay">
+    <view class='payBtn'>
+      立即支付
+    </view>
+  </view>
+</view>

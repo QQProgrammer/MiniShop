@@ -1,0 +1,27 @@
+<view class='coupon'>
+  <view class="couponList">
+    <scroll-view scroll-y="true" bindscrolltolower="searchScrollLower">
+      <view class="coupon-item" wx:for="{{contentlist}}" wx:key="unique" data-data="{{item}}">
+        <view class='couponview'>
+          <text>￥{{item.amount}}</text>
+        </view>
+        <view class='couponview'>
+          <text class='itemTitle'>{{item.title}}</text>
+          <text class='itemDesc'>. {{item.buy_amount}}</text>
+          <text class='itemDesc'>. {{item.time}}</text>
+          <text class='itemDesc'>. {{item.desc}}</text>
+        </view>
+        <view class='couponview' wx:if='{{item.useStyle == true}}'>
+          <navigator url='../../index/index'>
+            <view class='isUse' class="{{item.useStyle == true ? 'isUse':'noUse'}}">{{item.use}}</view>
+          </navigator>
+        </view>
+        <view class='couponview' wx:if='{{item.useStyle == false}}'>   
+            <view class='isUse' class="{{item.useStyle == true ? 'isUse':'noUse'}}">{{item.use}}</view>
+        </view>
+      </view>
+      <view class="loading" hidden="{{!searchLoading}}">正在载入更多...</view>
+      <view class="loading complete" hidden="{{!searchLoadingComplete}}">已加载全部</view>
+    </scroll-view>
+  </view>
+</view>

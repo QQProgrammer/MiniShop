@@ -1,0 +1,193 @@
+/**index.wxss**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  position: relative;
+}
+
+/* <!-- 遮罩层 --> */
+
+.modal-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* 注册弹框 */
+
+.modal-body {
+  position: absolute;
+  top: 200rpx;
+  left: 80rpx;
+  height: 490rpx;
+  width: 550rpx;
+  background-color: white;
+  z-index: 10;
+  padding: 20rpx;
+}
+.modal-body .modal_title {
+  text-align: center;
+  font-weight: 700;
+  margin: 20rpx;
+  height:54rpx;
+}
+.close{
+  color: white;
+  position: relative;
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #f4a24b;
+  border-radius: 50%;
+  top:-117rpx;
+  right:-465rpx;
+}
+.modal-content {
+  border-radius: 10rpx;
+}
+
+.itemView {
+  margin: 30rpx 0;
+}
+
+.input {
+  margin: 20rpx;
+  height: 80rpx;
+  background-color: #f0eff5;
+  border-radius: 5rpx;
+  padding-left: 20rpx;
+  border: 1rpx solid #f0eff5;
+  color: #96959a;
+  font-size: 24rpx;
+}
+
+.placeholder {
+  color: #96959a;
+  font-size: 24rpx;
+}
+
+.knowBtn {
+  color: white;
+  height: 90rpx;
+  line-height: 90rpx;
+  border: none;
+  margin-top: 36rpx;
+  border-radius: 40rpx;
+  background: linear-gradient(#f4a24b, #f2bc4d);
+}
+.sendCode{
+  padding-left: 20rpx;
+  height: 26rpx;
+  line-height: 26rpx;
+  width: 130rpx;
+  font-size: 24rpx;
+  color:#f2bc4d;
+  border-left: 1rpx solid #96959a;
+  position: relative;
+  top:-73rpx;
+  left:354rpx;
+  z-index:12;
+}
+/* 主页面  */
+
+.indexheaduser {
+  padding: 0 30rpx;
+  overflow: hidden;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #f4a24b;
+}
+
+.index_add {
+  float: left;
+  font-size: 24rpx;
+  color: white;
+  vertical-align: middle;
+}
+
+.index_add text {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.index_add image {
+  margin-left: 10rpx;
+  height: 20rpx;
+  width: 20rpx;
+  display: inline-block;
+}
+
+.index_user {
+  float: right;
+  margin-top: 10rpx;
+  height: 64rpx;
+  width: 64rpx;
+}
+
+.indexhead_banner {
+  height: 176rpx;
+  background-color: #f4a24b;
+}
+
+/* 第二部分 */
+
+.indexicon {
+  margin: 100rpx 15rpx 0 15rpx;
+  display: flex;
+}
+
+.indexhead_icon {
+  flex: 1;
+  height: 296rpx;
+}
+
+/* 第3部分 */
+
+.indexact {
+  padding: 0 15rpx;
+}
+
+.indexact_title_box {
+  display: flex;
+  height: 88rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.indexact_title {
+  color: #aaa;
+  font-size: 28rpx;
+  width: 248rpx;
+  text-align: center;
+}
+
+.indexact_list {
+  height: 240rpx;
+  display: flex;
+  margin-top: 0 20rpx;
+}
+
+.indexact_list .imgacturl {
+  flex: 1;
+  margin: 0 15rpx;
+}
+
+.indexscan {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.indexscan image {
+  width: 382rpx;
+  height: 124rpx;
+  margin: 30rpx 0;
+}

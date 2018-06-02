@@ -1,0 +1,87 @@
+.integral{
+  background-color: #f0eff5;
+}
+.integral_one{
+  height: 200rpx
+}
+.integral_top{
+  height: 150rpx;
+  width: 100%;
+  margin: 0 auto;
+  background: -webkit-linear-gradient(bottom, #f4a24c,#eeedf2); /* Safari 5.1 - 6 */
+  background: -o-linear-gradient(ribottomght, #f4a24c,#eeedf2); /* Opera 11.1 - 12*/
+  background: -moz-linear-gradient(ribottomght, #f4a24c,#eeedf2); /* Firefox 3.6 - 15*/
+  background: linear-gradient(to bottom, #f4a24c, #eeedf2); /* 标准的语法 */
+  overflow: inherit;
+  position: relative
+}
+.integral_top .integral_header{
+  width: 690rpx;
+  height: 161rpx;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius:15rpx;
+  position: absolute;
+  margin-top: 30rpx;
+  left: 30rpx;
+}
+.integral_top .integral_header .headerLeft{
+  margin: 0 auto;
+  height: 90rpx;
+  float: left;
+  margin-top: 45rpx;
+  margin-left: 70rpx;
+}
+.integral_top .integral_header .headerright{
+  margin: 0 auto;
+  height: 90rpx;
+  line-height: 90rpx;
+  float: right;
+  margin-top: 45rpx;
+  margin-right: 65rpx;
+}
+
+.integral_body{
+  width: 690rpx;
+  margin:0 auto;
+  background: #ffffff;
+  margin-top: 10rpx;
+  border-radius:15rpx;
+  overflow: auto; 
+}
+.integral_body{
+
+}
+.integral_body .item{
+  height: 140rpx;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+  padding-top:30rpx; 
+  border-top: 1rpx solid #f0eff5;
+}
+.item_left{
+  float: left;
+  height: 130rpx;
+  font-size: 29rpx;
+}
+.item_right{
+  float: right;
+  height: 130rpx;
+  line-height: 130rpx;
+  font-size:35rpx; 
+}
+.item_name{
+  width: 470rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow : ellipsis;
+}
+.item_address{
+  margin-top: 20rpx;
+  color: #929292;
+}
+.item_titme{
+  margin-top: 10rpx;
+  color: #929292;
+}

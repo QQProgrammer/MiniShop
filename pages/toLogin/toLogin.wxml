@@ -1,0 +1,7 @@
+<!--pages/toLogin/toLogin.wxml-->
+<!-- 授权弹框 -->
+<view class='toLogin'>
+  <view class='warp' wx:if='{{eye}}'>
+    <button open-type="getUserInfo" hover-class='none' bindgetuserinfo="getUserInfoFun">同意授权</button>
+  </view>
+</view>

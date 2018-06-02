@@ -1,0 +1,39 @@
+<view class="classify">
+  <view class="goods-banner">
+    <view class="img-banner">
+      <image src='/static/images/index_addre.png'></image>
+      <text>{{screenSite}}</text>
+    </view>
+  </view>
+  <!--分类导航栏-->
+  <scroll-view class='left-navbar' scroll-y="true" style='margin-bottom:100rpx'>
+    <view wx:for="{{screenArray}}" class="{{ currentTab == index ? 'active' : '' }}" wx:key="unique" bindtap="{{ currentTab != index ? 'navbarTap':'' }}" id="{{index}}" data-screenId="{{item.screenId}}">{{item.screenName}}
+    </view>
+  </scroll-view>
+  <scroll-view id="right" scroll-y="true" scroll-top="{{scrollTop}}">
+
+    <!--商品展示-->
+    <view class="goods-list" style='margin-bottom:50rpx'>
+      <view wx:for="{{childrenArray}}" class="goods" wx:key="unique" bindtap="ToSearchResult" id="{{index}}" data-screenId="{{item.id}}" bindtap="addGoods">
+        <view class='goodsItem' style='height:140rpx;width:140rpx;background-color:#f5c64b;'>
+          <image class="goodsImg" src="{{item.image}}" wx:if="{{item.image}}"></image>
+        </view>
+        <view class='goodsItem'>
+          <text class="goodsName">{{item.name}}</text>
+          <text class='goodsPrice'>￥{{item.price}}</text>
+        </view>
+        <view class='addIconItem'>
+          <view class='addIcon'>+</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+ <view class='cartTab'>
+     <view class='cartTabitem'>
+        <image src='/static/images/cart.png'></image>
+        <view class='cartNum' wx:if="{{cartNum!=0}}">{{cartNum}}</view>
+     </view>
+     <view class='cartTabitem'>￥ <text>{{cartMoney}}</text></view>
+     <view class='cartTabitem' bindtap="toSubmit" >去结算</view>
+ </view>
+</view>

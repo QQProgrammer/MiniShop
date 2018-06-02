@@ -1,0 +1,47 @@
+<view class='paySuc'>
+  <view class='cover' wx:if="{{cover}}">
+
+  </view>
+  <view class='modal' wx:if="{{cover}}">
+    <view class='modalHeader'>
+      <text> 支付成功</text>
+    </view>
+    <view class='modalCont'>
+      <view>
+        <text style='font-size:30rpx;color:#2c2c2c'> 恭喜您获得</text>
+      </view>
+      <view>
+        <text style='display:block;font-size:26rpx;color:#9a9a9a;margin-top:30rpx'>无人货架无门槛3元优惠券</text>
+        <text style='display:block;font-size:26rpx;color:#9a9a9a;margin-top:30rpx'>日尝食食5元优惠券</text>
+      </view>
+    </view>
+    <view class='modalFoot'>
+      <view bindtap="cancel">关闭</view>
+      <view>立即查看</view>
+    </view>
+  </view>
+  <view class='paySucHead'>
+    <icon type="success" size="60" color="green" />
+    <text style='font-size:34rpx;'>支付成功</text>
+    <view class='ermBox'></view>
+    <text>▲</text>
+    <text>微信扫一扫关注日尝食食公众号</text>
+    <text>获得更多权益</text>
+  </view>
+  <view class='paySumYhj'>
+    <text>恭喜您获得了2张优惠券</text>
+    <text>立即查看></text>
+  </view>
+  <view class='paySucImg'>
+           <view style='padding:0 30rpx'>
+        <!-- 轮播图 -->
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}} " circular="true" style='height:240rpx'>
+          <block wx:for="{{imgUrlsAct}}" wx:key="{{item.id}}">
+            <swiper-item>
+              <image style='height:240rpx;border-radius:20rpx' src="{{item.image}}" bindtap="toAdsense" data-url='{{item.url}}' class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<view class='orderList'>
+  <scroll-view class="list" style="height:{{scrollHeight}}px;" scroll-y="true" bindscrolltolower="loadMore">
+    <view class='orderItem' wx:for="{{orderList}}" wx:key="id">
+      <view class='orderItem_one'>
+        <text class='textTime'>{{item.create_date}}</text>
+        <text class='textState'>{{item.order_status}}</text>
+      </view>
+      <view class='orderItem_Two'>
+        <text class='goods' style='textColor:red'>{{item.title}} {{item.cunt}}件商品 〉</text>
+        <text class='price'>￥{{item.pay_amount}}</text>
+      </view>
+      <view class='orderItem_Three'>
+        <view class='orderBtn' style='margin-left:345rpx;' data-orderid="{{item.id}}" bindtap="deletOrderBtn">删除订单</view>
+        <view class='orderBtn' style='margin-left:29rpx;;color: #f8c288;border:1rpx solid #f8c288;' bindtap='detailsBtn' data-orderid="{{item.id}}">查看详情</view>
+    </view>
+  </view>
+  </scroll-view>  
+  <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{LoadMoreTitle}}</view>
+  </view>
+</view>
+

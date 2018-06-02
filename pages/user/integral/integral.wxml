@@ -1,0 +1,29 @@
+<view class='integral'>
+  <view class='integral_one'>
+     <view class='integral_top'>
+      <view class='integral_header'>
+        <view class='headerLeft'>
+          <view style='font-size:25rpx'>我的积分</view>
+          <view style='font-size:30rpx;margin-top:15rpx'>{{integarl}}</view>
+        </view>
+        <view class='headerright' style='font-size:28rpx'>使用说明</view>
+      </view>
+    </view>
+  </view>
+ 
+  <view class='integral_body'>
+    <view style='margin-top:27rpx;margin-left:29rpx;font-size:30rpx;margin-bottom:30rpx'>积分明细</view>
+    <view class='item' wx:for='{{integarlList}}' wx:key='id'>
+      <view class='item_left' >
+        <view class='item_name'>{{item.memo}}</view>
+        <view class='item_address'>·{{item.memo}}</view>
+        <view class='item_titme'>·{{item.create_date}}</view>
+      </view>
+      <view class='item_right' style="color:{{item.type=='recharge'? '#f1a245':'#333333'}}">
+       {{item.discount}}
+      </view>
+    </view>
+
+    
+  </view>
+</view>

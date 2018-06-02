@@ -1,0 +1,79 @@
+/* pages/user/coupon/coupon.wxss */
+
+.couponList {
+  padding: 20rpx 30rpx;
+}
+
+.coupon-item {
+  height: 200rpx;
+  background-color: white;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+}
+
+.couponview {
+  float: left;
+}
+
+.coupon-item .couponview:nth-child(1) {
+  width: 195rpx;
+  line-height: 200rpx;
+  text-align: center;
+  font-size: 42rpx;
+}
+
+.coupon-item .couponview:nth-child(1) text {
+  color: #f0a656;
+}
+
+.coupon-item .couponview:nth-child(2) {
+  width: 325rpx;
+}
+
+.coupon-item .couponview:nth-child(2) text {
+  display: block;
+}
+
+.itemTitle {
+  margin-top: 35rpx;
+  width: 325rpx;
+  height: 30rpx;
+  font-size: 26rpx;
+  color: #2d2d2d;
+  text-overflow: ellipsis;
+   white-space: nowrap; 
+   overflow: hidden;
+   margin-bottom: 10rpx;
+}
+
+.itemDesc {
+  font-size: 20rpx;
+  color: #9f9f9f;
+  margin-top: 10rpx;
+}
+
+.coupon-item .couponview:nth-child(3) {
+  width: 170rpx;
+  line-height: 200rpx;
+  padding-top: 75rpx;
+}
+.isUse{
+  width: 130rpx;
+  height: 45rpx;
+  text-align: center;
+  line-height: 45rpx;
+  border: 1rpx solid #f0a656;
+  border-radius: 30rpx;
+  font-size: 22rpx;
+  color: #f0a656
+}
+ .noUse{
+  width: 130rpx;
+  height: 45rpx;
+  text-align: center;
+  line-height: 45rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 30rpx;
+  font-size: 22rpx;
+  color: #ccc
+}

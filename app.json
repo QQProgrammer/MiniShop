@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/user/user",
+    "pages/toLogin/toLogin",
+    "pages/scan/scan",
+    "pages/scan/shelf",
+    "pages/scan/cart",
+    "pages/scan/submit",
+    "pages/scan/pay",
+    "pages/scan/paySuc",
+    "pages/index/webView",
+    "pages/user/coupon/coupon",
+    "pages/user/order/orderList/orderList",
+    "pages/user/order/orderDetail/orderDetail",
+    "pages/user/integral/integral"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#f4a24b",
+    "navigationBarTitleText": "无人货架",
+    "navigationBarTextStyle": "white"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
