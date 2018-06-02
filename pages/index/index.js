@@ -27,22 +27,9 @@ Page({
     currentTime: 60,
     disabled: false,//可点击
     code: '',
-    uuid:''
+    uuid: '',
+    valueinput: ''
   },
-  // getLocation: function (e) {//点击定位
-  //   console.log(e)
-  //   var that = this
-  //   wx.getLocation({
-  //     type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标  
-  //     success: function (res) {
-  //       console.log(res)
-  //       that.setData({
-  //         longitude: res.longitude,
-  //         latitude: res.latitude
-  //       })
-  //     }
-  //   })
-  // },
   goToRecharge: function () {//点击充值有礼
     console.log("点击充值有礼")
   },
@@ -110,10 +97,7 @@ Page({
     }
   },
   close: function () {//注册关闭
-    // this.setData({
-    //   userTel: true,
-    //   isCover: false
-    // })
+
     wx.navigateBack({
       delta: 0
     })
@@ -156,16 +140,25 @@ Page({
         }
       },
       success: function (res) {
-        console.log(res)
-        if (res.data.code == 0) {
-          resolve(res)
+        if (res.data.arg == null) {
+          that.setData({
+            userTel: false,
+            isCover: true,
+            valueinput: ''
+          })
+          wx.showModal({
+            title: '提示',
+            content: res.data.content
+          })
+
+        } else {
+          wx.setStorage({ key: "userTel", data: that.data.userNumber }) //信息存本地
+          wx.setStorage({ key: "userarg", data: res.data.arg }) //信息存本地
+          that.setData({
+            userTel: true,
+            isCover: false
+          })
         }
-        wx.setStorage({ key: "userTel", data: that.data.userNumber }) //信息存本地
-        wx.setStorage({ key: "userarg", data: res.data.arg }) //信息存本地
-        that.setData({
-          userTel: true,
-          isCover: false
-        })
       },
       fail: function (res) {
         console.log(res)
@@ -188,8 +181,8 @@ Page({
       url: '../logs/logs'
     })
   },
-  toAdsense:function(e){
-    var item = e.currentTarget.dataset.url;  
+  toAdsense: function (e) {
+    var item = e.currentTarget.dataset.url;
     console.log(item)
     wx.navigateTo({
       url: '../index/webView?url=' + item

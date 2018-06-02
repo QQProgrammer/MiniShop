@@ -5,15 +5,15 @@
   <!-- 注册弹框 -->
   <view class="modal-body" wx:if="{{!userTel}}">
     <view class='modal_title'>
-      <text>注册</text>
+      <text>登陆</text>
       <view class="close" bindtap="close">x</view>
     </view>
     <form class="modal-content">
       <view class="itemView">
-        <input class="input" maxlength="11" name="userNumber" type="number" bindinput="userNumberInput" placeholder="请输入手机号" placeholder-class="placeholder" />
+        <input class="input" maxlength="11" name="userNumber" type="number" bindinput="userNumberInput" placeholder="请输入手机号" placeholder-class="placeholder" value="{{valueinput}}" />
       </view>
       <view class="itemView">
-        <input class="input" bindinput="userCodeInput" name="userCode" placeholder="请输入验证码" placeholder-class="placeholder" />
+        <input class="input" bindinput="userCodeInput" name="userCode" placeholder="请输入验证码" placeholder-class="placeholder" value="{{valueinput}}"/>
         <view class='sendCode' disabled='{{disabled}}' bindtap="sendCode">{{sendCodeMsg}}</view>
       </view>
       <view class="itemView">
