@@ -7,14 +7,17 @@
     "pages/scan/scan",
     "pages/scan/shelf",
     "pages/scan/cart",
-    "pages/scan/submit",
-    "pages/scan/pay",
-    "pages/scan/paySuc",
+    "pages/orderPay/submit",
+    "pages/orderPay/pay",
+    "pages/orderPay/paySuc",
     "pages/index/webView",
     "pages/user/coupon/coupon",
     "pages/user/order/orderList/orderList",
     "pages/user/order/orderDetail/orderDetail",
-    "pages/user/integral/integral"
+    "pages/user/integral/integral",
+    "pages/user/set/set",
+    "pages/user/set/about",
+    "pages/user/personIfo/personIfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

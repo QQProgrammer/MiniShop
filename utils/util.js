@@ -1,6 +1,7 @@
 const app = getApp()    // 加这句就可以使用app.js里的内容
 var textUrl = app.globalData.textUrl
 var imgUrl = app.globalData.imgUrl
+var smallImgUrl = app.globalData.smallImgUrl
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -21,42 +22,15 @@ const formatNumber = n => {
 function trim(s) {
   return s.replace(/(^\s*)|(\s*$)/g, "");
 }
-// 获取广告
-// posParam  位置参数 foot为支付后轮播图，banner为首页轮播图，indexfoot为首页底部广告
-// dataParam 获取结果后赋值的参数在data内存在
-function getAdsenseList(posParam,dataParam) {
-    var that = this;
-    wx.request({//获取轮播图
-      url: textUrl + 'sms/getAdsenseList',
-      data: {
-        position: posParam
-      },
-      method: "GET",
-      header: {
-        "Content-Type": "application/json"
-      },
-      complete: function (res) {
-      var arrImg=res.data;
-      for(let i=0;i<arrImg.length;i++){
-        arrImg[i].image = imgUrl + arrImg[i].image
-      }
-        that.setData({
-          dataParam: arrImg
-        });
-        console.log(res)
-        if (res == null || res.data == null) {
-          reject(new Error('网络请求失败'))
-        }
-      },
-      success: function (res) {
-        if (res.data.code == 0) {
-          resolve(res)
-        }
-      }
-    })
+// 压缩图片方法
+
+function getSmallImge(width, height, dir, name) {
+  console.log(width)
+  return smallImgUrl + width + "_" + height + "/" + dir + "/" + name.split(".")[0] + "_" + name.split(".")[1];
 }
+
 module.exports = {
   formatTime: formatTime,
-  getAdsenseList: getAdsenseList,
+  getSmallImge: getSmallImge,
   trim: trim
 }

@@ -34,23 +34,26 @@ Page({
         var datalistNew = [];
         for (let i = 0; i < datalist.length; i++) {
           var data = new Object();
-          data.amount = datalist[i].amount; 
-          data.title = datalist[i].title; 
-          data.buy_amount = '满' + datalist[i].buy_amount + '减' + datalist[i].amount; 
+          data.amount = datalist[i].amount;
+          data.title = datalist[i].title;
+          data.id = datalist[i].id;
+          data.buy_amount = datalist[i].buy_amount;
+          data.mjdesc = '满' + datalist[i].buy_amount + '减' + datalist[i].amount;
           data.time = datalist[i].apply_date + datalist[i].invalid_date;
-          if (datalist[i].ranges==null){
-            data.desc = '仅限无人货架使用'; 
-          }else{
-            data.desc = datalist[i].ranges; 
+
+          if (datalist[i].ranges == null) {
+            data.desc = '仅限无人货架使用';
+          } else {
+            data.desc = datalist[i].ranges;
           }
-          if (datalist[i].is_expired==true){
-            data.use='已失效'
+          if (datalist[i].is_expired == true) {
+            data.use = '已失效'
             data.useStyle = false
-          }else{
-            if (datalist[i].is_used == true){
+          } else {
+            if (datalist[i].is_used == true) {
               data.use = '已使用'
               data.useStyle = false
-            }else{
+            } else {
               data.use = '立即使用'
               data.useStyle = true
             }
@@ -97,5 +100,83 @@ Page({
         title: '没有更多数据',
       })
     }
+  },
+  toUse: function (e) {
+    //本地没有商品存储，点击立即使用优惠券跳转首页
+    //本地有商品存储，点击立即使用优惠券跳回购物车提交订单页
+    var cartItems = wx.getStorageSync('cartItems') || ''
+
+    if (cartItems == '') {
+      // //调取扫一扫
+      // wx.navigateTo({//测试用
+      //   url: '../../scan/scan'
+      // })
+      //下方为正确扫码
+      wx.scanCode({
+        onlyFromCamera: true,
+        success: (res) => {
+          var url = res.result
+          if (url.indexOf("?") != -1) {
+            var str = url.split("?");
+            if (str[1].indexOf("=") != -1) {
+              var Request = str[1].split("=");
+              if (Request[0] == 'pid') {
+                wx.navigateTo({
+                  url: '../../scan/cart?typeCart=2&&pid='+Request[1]
+                })
+              } else if (Request[0] == 'sid') {
+                wx.navigateTo({
+                  url: '../../scan/shelf?sid='+Request[1]
+                })
+              }
+            }
+          }
+        }
+      })
+
+    } else {
+      // console.log(e)
+      var contentlist = this.data.contentlist
+      var index = e.target.id
+      if (contentlist[index].useStyle == true) {
+        var useCoupons = contentlist[index].id
+        var manAmount = contentlist[index].buy_amount
+        var amount = contentlist[index].amount
+        var title = contentlist[index].title
+
+        wx.setStorage({//优惠券id
+          key: 'useCoupon',
+          data: useCoupons,
+          success: function (res) {
+          }
+        })
+        wx.setStorage({//减几
+          key: 'amount',
+          data: amount,
+          success: function (res) {
+          }
+        })
+        wx.setStorage({//
+          key: 'manAmount',
+          data: manAmount,
+          success: function (res) {
+          }
+        })
+        wx.setStorage({
+          key: 'couponTitle',
+          data: title,
+          success: function (res) {
+          }
+        })
+        wx.navigateTo({
+          url: "../../orderPay/submit"
+        })
+      } else {
+        wx.navigateTo({
+          url: '../../orderPay/submit'
+        })
+      }
+    }
+
   }
 })

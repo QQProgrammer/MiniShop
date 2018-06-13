@@ -4,16 +4,16 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.9.9",
+	"libVersion": "1.9.98",
 	"appid": "wxca75dbc8a0016d68",
-	"projectname": "MiniShop",
+	"projectname": "%E6%97%A0%E4%BA%BA%E8%B4%A7%E6%9E%B6",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
@@ -24,24 +24,13 @@
 			"current": -1,
 			"list": []
 		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "11",
-					"pathName": "pages/user/coupon/coupon",
-					"query": ""
-				}
-			]
+			"list": []
 		}
 	}
 }

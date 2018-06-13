@@ -1,3 +1,8 @@
+const app = getApp()
+var uuid = app.globalData.uuid
+var textUrl = app.globalData.textUrl
+var smallImgUrl = app.globalData.imgUrl
+var util = require('../../../../utils/util.js')
 Page({
 
   /**
@@ -5,36 +10,14 @@ Page({
    */
   data: {
     orderId:null,//订单号
-
-    orderIfo:{
-      // originalPrice:'11.5',//原价
-      // preferential:'-1.5',//优惠
-      // realPay:'11.5',//实付
-      // orderNum:'1000837499997865732',
-      // orderNumSplice:'',//分割后 订单号
-      // payMethod:'账户余额',//支付方式
-      // orderTime:'2018-05-04 16:40',//下单时间
-    },
-    productList:[
-      {
-        productImg:'https://s3-010-shinho-ecshool-prd-bjs.s3.cn-north-1.amazonaws.com.cn/Product/201805181644529044.png',
-        productName:'可口可乐',
-        productCunt:'2',
-        productPrice:'5',
-      },
-      {
-        productImg: 'https://s3-010-shinho-ecshool-prd-bjs.s3.cn-north-1.amazonaws.com.cn/Product/201805181644529044.png',
-        productName: '趣多多',
-        productCunt: '2',
-        productPrice: '6.5',
-      }
-    ]
+    orderIfo:{},
+    productList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) {//30763 options.orderId
     this.data.orderId = options.orderId
     //orderIfo.orderNum 设置订单号分割
     this.requestOrderDetal()
@@ -57,8 +40,7 @@ Page({
   },
   requestOrderDetal:function (){//获取订单详情
     var self = this;
-    var url = 'https://minisuperuat.shinshop.com/web/oms/getOrderLocal?uuid=41e88a10eb324a84aa14094255b4fbd6&oid=' + this.data.orderId
-    var data = { oid: '710', uuid: "41e88a10eb324a84aa14094255b4fbd6" }
+    var url = textUrl+'oms/getOrderLocal?uuid='+uuid+'&oid='+ this.data.orderId
     wx.request({//
       url: url,
       // data: data,
@@ -75,6 +57,15 @@ Page({
         }else{
           dataAll.order_status = '订单未完成'
         }
+        //productImg
+        dataAll.orderItems.map((item) =>{
+          if (item.proimg == null){
+            item.productImg = '/static/images/no_img.png'
+          }else{
+            item.productImg = util.getSmallImge(0, 300, "product_cover", item.proimg);
+          }
+          
+        })
         self.setData({
           orderIfo: dataAll
         });
@@ -101,6 +92,43 @@ Page({
     this.setData({
       'orderIfo.orderNumSplice': arr.join(' ')
     });
-  }
+  },
+  contactService: function (){//联客服
+    //4001688810
+    wx.makePhoneCall({
+      phoneNumber:'4001688810'
+    })
+  },
+  deletOrderBtn: function (e) {//删除订单
+    //console.log(e.currentTarget.dataset)
+    var self = this
+    wx.showModal({
+      title: '删除',
+      content: '您确定要删除此订单吗?',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.request({
+            url: textUrl+'oms/cancelOmsOrder',
+            data:{
+              openid:'',
+              uuid:uuid,
+              sn: e.currentTarget.dataset.sn
+            },
+            method:'post',
+            success:function (res){
+              // self.requestOrderList()//刷新数据
+            },
+            fail:function (res){
+
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+
+  },
  
 })

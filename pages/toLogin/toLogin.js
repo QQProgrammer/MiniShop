@@ -11,18 +11,26 @@ Page({
     this.getUserInfoFun()
   },
   getUserInfoFun: function (e) {
+    console.log(e)
     if (e) {
-      this.setData({
-        userInfo: e.detail.rawData,
-        hasUserInfo: true,
-        eye: false
-      })
-      console.log(this.data.userInfo)
-      app.globalData.userInfo = e.detail.rawData
-      wx.setStorage({ key: "userInfo", data: e.detail.rawData }) //信息存本地
-      wx.redirectTo({//跳转到授权页面
-        url: '/pages/index/index'
-      })
+      if (e.detail.rawData) {
+        this.setData({
+          userInfo: e.detail.rawData,
+          hasUserInfo: true,
+          eye: false
+        })
+        console.log(this.data.userInfo)
+        app.globalData.userInfo = e.detail.rawData
+        wx.setStorage({ key: "userInfo", data: e.detail.rawData }) //信息存本地
+        wx.redirectTo({//跳转到授权页面
+          url: '/pages/index/index'
+        })
+      } else {
+        wx.navigateBack({
+          delta: 0
+        })
+      }
+
     }
   },
   showPrePage: function () {

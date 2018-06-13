@@ -5,7 +5,7 @@
   <!-- 注册弹框 -->
   <view class="modal-body" wx:if="{{!userTel}}">
     <view class='modal_title'>
-      <text>登陆</text>
+      <text>登录</text>
       <view class="close" bindtap="close">x</view>
     </view>
     <form class="modal-content">
@@ -14,7 +14,7 @@
       </view>
       <view class="itemView">
         <input class="input" bindinput="userCodeInput" name="userCode" placeholder="请输入验证码" placeholder-class="placeholder" value="{{valueinput}}"/>
-        <view class='sendCode' disabled='{{disabled}}' bindtap="sendCode">{{sendCodeMsg}}</view>
+        <button  style="border:0;" class='sendCode' disabled='{{disabled}}' bindtap="sendCode">{{sendCodeMsg}}</button>
       </view>
       <view class="itemView">
         <button class="knowBtn input" bindtap="makeSure">确定</button>
@@ -30,7 +30,7 @@
         <image src='/static/images/index_addre.png'></image> -->
       </view>
       <view class='index_user' bindtap="toast">
-        <image src='/static/images/index_icon.png'></image>
+        <image style='border-radius:50%' src='{{imageUser}}'></image>
       </view>
     </view>
     <view class='indexhead_banner'>

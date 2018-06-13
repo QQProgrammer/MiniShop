@@ -12,9 +12,9 @@ App({
       success: function (res) {
         if (res.code) {
           wx.setStorageSync('code', res.code)
-          console.log(res)
+          // console.log(res)
         } else {
-          console.log('登录失败！' + res.errMsg)
+          // console.log('登录失败！' + res.errMsg)
         }
       }
     });
@@ -49,6 +49,7 @@ App({
     userTel:null,
     textUrl: 'https://minisuperuat.shinshop.com/web/',
     imgUrl:'http://s3.cn-north-1.amazonaws.com.cn/s3-004-shinho-dubbo-prd-bjs/datas/image/adsense/',
-    uuid: wx.getStorageSync('userarg') || ''
+    smallImgUrl: 'https://minisuperuat.shinshop.com/web/imsmanager/image_',
+    uuid: wx.getStorageSync('userarg') || '',//wx.getStorageSync('userarg') || ''  41e88a10eb324a84aa14094255b4fbd6
   }
 })

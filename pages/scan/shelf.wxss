@@ -27,7 +27,7 @@
 #right {
   position: absolute;
   right: 0;
-  width: 75%;
+  width: 80%;
   height: 90%;
   background-color: white;
 }

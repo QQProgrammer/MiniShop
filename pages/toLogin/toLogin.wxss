@@ -1,0 +1,23 @@
+.loginBgc {
+  height: 1334rpx;
+  position: relative;
+  width: 750rpx;
+}
+
+.warp {
+  height: 700rpx;
+  position: absolute;
+  bottom: 0;
+  width: 750rpx;
+  overflow: hidden;
+}
+
+.warp button {
+  color: transparent;
+  background-color: transparent;
+  height: 700rpx;
+}
+
+.warp button::after {
+  border: none;
+}

@@ -1,4 +1,5 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "扫一扫"
 }

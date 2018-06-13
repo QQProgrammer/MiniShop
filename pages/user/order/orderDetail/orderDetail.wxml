@@ -4,32 +4,32 @@
       <view class='one_top'>
         <text class='top_title'>{{orderIfo.order_status}}</text>
         <view>
-          <view class='orderBtn' style='margin-left:180rpx'>删除订单</view>
-          <view class='orderBtn' style='margin-left:46rpx'>联系客服</view>
+          <view class='orderBtn' style='margin-left:180rpx' bindtap='deletOrderBtn'>删除订单</view>
+          <view class='orderBtn' style='margin-left:46rpx' bindtap='contactService'>联系客服</view>
         </view>
       </view>
     </view>
   </view>
   <view class='two'>
-    <text class='Title'>{{orderIfo.business_name}}</text>
+    <text class='Title'>{{orderIfo.business_name ==null ? '':orderIfo.business_name}}</text>
     <view class='Item' wx:for="{{orderIfo.orderItems}}" wx:key='id'>
       <image class='productImg' src='{{item.productImg}}'></image>
       <text class='productName'>{{item.name}}</text>
-      <text class='productPrice'>￥{{item.price-item.discountprice}}</text>
-      <text class='productCunt'>× {{item.amount}}</text>
+      <text class='productPrice'>￥{{item.price}}</text>
+      <text class='productCunt'>× {{item.quantity}}</text>
     </view>
     <!--原价,优惠,实付-->
     <view class='Item' style='margin:0rpx'>
       <text class='productName'>原价</text>
-      <text class='productPrice'>￥{{orderIfo.originalPrice}}</text>
+      <text class='productPrice'>￥{{orderIfo.offset_amount}}</text>
     </view>
     <view class='Item' style='margin:0rpx'>
       <text class='productName'>优惠</text>
-      <text class='productPrice' style='color:red'>￥{{orderIfo.promotion_discount}}</text>
+      <text class='productPrice' style='color:red'>￥{{orderIfo.order_discount==null?'0':orderIfo.order_discount}}</text>
     </view>
     <view class='Item' style='margin:0 auto;border-top:1rpx solid #f0eff5;width:90%'>
       <text class='productName' style='margin-left:10rpx'>实付</text>
-      <text class='productPrice' style='font-size:36rpx;margin-right:0'>￥{{orderIfo.pay_amount}}</text>
+      <text class='productPrice' style='font-size:36rpx;right:0'>￥{{orderIfo.pay_amount}}</text>
     </view>
 
   </view>
@@ -42,7 +42,7 @@
     </view>
     <view class='Item'>
       <text class='productName'>支付方式</text>
-      <text class='productPrice' style='color:#676767'>{{orderIfo.paytype}}</text>
+      <text class='productPrice' style='color:#676767'>{{orderIfo.paytype =='online' ? '在线支付':''}}</text>
     </view> 
     <view class='Item'>
       <text class='productName'>下单时间</text>

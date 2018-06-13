@@ -1,32 +1,13 @@
+const app = getApp()
+var uuid = app.globalData.uuid
+var textUrl = app.globalData.textUrl
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     integarl:null,//积分值
-    integarlList:[
-      {
-        item_name:'百事可乐225ml百事可乐225ml百事可乐225ml百事可乐225ml',
-        item_address:'无人货架',
-        item_titme:'2018-05-04 16:40',
-        item_integral:'1',
-        state:1,
-      },
-      {
-        item_name: '百事可乐225ml',
-        item_address: '无人货架',
-        item_titme: '2018-05-04 16:40',
-        item_integral: '1',
-        state: 0,
-      },
-      {
-        item_name: '百事可乐225ml',
-        item_address: '无人货架',
-        item_titme: '2018-05-04 16:40',
-        item_integral: '7',
-        state: 1,
-      },
-    ]
+    integarlList:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -49,7 +30,7 @@ Page({
     //   integarlList: this.data.integarlList
     // })
     var self = this;
-    var url = 'https://minisuperuat.shinshop.com/web/user/getUserPoint?uuid=41e88a10eb324a84aa14094255b4fbd6'
+    var url = textUrl+ 'user/getUserPoint?uuid='+uuid
     wx.request({//获取积分值
       url: url,
       method: "get",
@@ -74,8 +55,8 @@ Page({
   },
   requestIntegarList:function (){
     var self = this;
-    var url = 'https://minisuperuat.shinshop.com/web/user/findByPointRecordList'
-    var DATA = { uuid: '41e88a10eb324a84aa14094255b4fbd6', pagesize: 4, pagenumber:1}
+    var url = textUrl+'user/findByPointRecordList'
+    var DATA = { uuid: uuid, pagesize: 4, pagenumber:1}
     wx.request({//获取积分值
       url: url,
       method: "POST",

@@ -4,12 +4,12 @@
   <view class='cartHead' wx:hide="{{headHide}}">
     <view class='cartHeadBox' bindtap="toAdd">
       <text style='float:left'>{{smsOrder}}</text>
-      <text style='float:right;color:#f89a4b'>去凑单>></text>
+      <text style='float:right;color:#f89a4b'>{{smsOrderText}}>></text>
     </view>
   </view>
   <view class="cart-box">
     <!-- wx:for 渲染购物车列表 -->
-    <view wx:for="{{carts}}" class='cartFoods' wx:for-index="index" wx:key="id">
+    <view wx:for="{{carts}}" wx:key="id" class='cartFoods' wx:for-index="index">
       <!-- 选择按钮 -->
        <view class='cartFoodsItem'> 
         <!-- wx:if 是否选择显示不同图标 -->
@@ -51,7 +51,7 @@
       
     </view>
     <view class='cartTabitem'>
-      <text><text style='font-size:24rpx;color:black'>应付</text>￥{{totalPrice}}</text>
+      <text><text style='font-size:24rpx;color:black'>合计</text>￥{{totalPrice}}</text>
     </view>
     <view class='cartTabitem' bindtap="toSubmit">去结算</view>
   </view>

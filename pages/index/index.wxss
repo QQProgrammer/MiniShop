@@ -33,13 +33,15 @@
   z-index: 10;
   padding: 20rpx;
 }
+
 .modal-body .modal_title {
   text-align: center;
   font-weight: 700;
   margin: 20rpx;
-  height:54rpx;
+  height: 54rpx;
 }
-.close{
+
+.close {
   color: white;
   position: relative;
   width: 60rpx;
@@ -48,9 +50,10 @@
   text-align: center;
   background-color: #f4a24b;
   border-radius: 50%;
-  top:-117rpx;
-  right:-465rpx;
+  top: -117rpx;
+  right: -465rpx;
 }
+
 .modal-content {
   border-radius: 10rpx;
 }
@@ -80,23 +83,30 @@
   height: 90rpx;
   line-height: 90rpx;
   border: none;
-  margin-top: 36rpx;
+  margin-top: -35rpx;
   border-radius: 40rpx;
   background: linear-gradient(#f4a24b, #f2bc4d);
 }
-.sendCode{
-  padding-left: 20rpx;
-  height: 26rpx;
-  line-height: 26rpx;
-  width: 130rpx;
-  font-size: 24rpx;
-  color:#f2bc4d;
+
+.sendCode::after {
+  border: none;
   border-left: 1rpx solid #96959a;
-  position: relative;
-  top:-73rpx;
-  left:354rpx;
-  z-index:12;
 }
+
+.sendCode {
+  list-style-type: none;
+  height: 50rpx;
+  line-height: 50rpx;
+  width: 180rpx;
+  font-size: 24rpx;
+  color: #f2bc4d;
+  position: relative;
+  top: -84rpx;
+  left: 165rpx;
+  z-index: 12;
+  background-color: #f0eff5;
+}
+
 /* 主页面  */
 
 .indexheaduser {
@@ -131,6 +141,7 @@
   margin-top: 10rpx;
   height: 64rpx;
   width: 64rpx;
+  border-radius: 50%;
 }
 
 .indexhead_banner {

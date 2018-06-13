@@ -1,65 +1,84 @@
 <view class='user'>
-<!-- 头部 -->
- <view class='user_head'>
- <!-- 头像部分 -->
- <view class='user_head_first'>
-   <view><image class='user_head_icon' src='{{userImg}}' mode='aspectFit'></image></view>
-   <view class='user_head_use'><text class='user_head_name'>{{userName}}</text><text class='user_head_tel'>{{userTel}}</text>
-   </view>
-  </view>
- <!-- 账户余额部分 -->
-  <view class='user_bal_box'>
-     <view class='user_bal'>
-       <view class='user_bal_item'>
-         <text>余额</text><text class='user_bal_itemdesc'>￥0.00</text>
-       </view>
-       <view class='user_bal_item' bindtap='toCoupon'>
-         <text>优惠券</text><text class='user_bal_itemdesc'>0</text>
-       </view>
+  <!-- 头部 -->
+  <view class='user_head'>
+    <!-- 头像部分 -->
+    <view class='user_head_first'>
+      <view>
+        <image class='user_head_icon' src='{{userImg}}' mode='aspectFit'></image>
+      </view>
+      <view class='user_head_use'>
+        <text class='user_head_name'>{{userName}}</text>
+        <text class='user_head_tel'>{{userTel}}</text>
+      </view>
+    </view>
+    <!-- 账户余额部分 -->
+    <view class='user_bal_box'>
+      <view class='user_bal'>
+        <!-- <view class='user_bal_item'>
+          <text>余额</text>
+          <text class='user_bal_itemdesc'>￥0.00</text>
+        </view> -->
+        <view class='user_bal_item' bindtap='toCoupon'>
+          <text>优惠券</text>
+          <text class='user_bal_itemdesc'>{{CouponNum}}</text>
+        </view>
         <view class='user_bal_item' bindtap='jumpIntegral'>
-         <text>积分</text><text  class='user_bal_itemdesc'>0</text>
-       </view>
-     </view>
- </view> 
- </view>
+          <text>积分</text>
+          <text class='user_bal_itemdesc'>{{integral}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
   <!-- 按钮部分  -->
   <!-- user_icon_box最外部的盒子 -->
-  <view class='user_icon_box'> 
-  <!-- user_icon三行整体的盒子 -->
+  <view class='user_icon_box'>
+    <!-- user_icon三行整体的盒子 -->
     <view class='user_icon'>
-    <!-- user_icon_item每一行 -->
-     <view  class='user_icon_item'>
-      <block wx:for="{{navigatorItems}}" wx:if='{{index < 4}}' wx:for-index="index" wx:key="{{item.index}}">
-        <!-- item_size没一个小格子 -->
-        <view class='item_size' bindtap="goList">
-          <view class="item_size_img" style='width:88rpx' bindtap='myOrderBtn' data-index='{{index}}'><image src="{{item.Icon}}"></image></view>
-          <view class="item_size_text"><text>{{item.Name}}</text></view>
-        </view>
-      </block> 
-      </view> 
-   <!-- 第二行遍历 -->
-     <view  class='user_icon_item'>
-        <block  wx:for="{{navigatorItems}}" wx:if='{{index > 3&&index <8}}' wx:for-index="index" wx:key="{{item.index}}">
-        <view class='item_size' bindtap="goList">
-          <view class="item_size_img"  style='width:88rpx'><image src="{{item.Icon}}"></image> </view>  
-         <view class="item_size_text"> <text>{{item.Name}}</text></view>
-       </view>
-      </block> 
-      </view> 
-   <!-- 第三行遍历 -->
-     <view  class='user_icon_item item_item_no'>
-        <block  wx:for="{{navigatorItems}}" wx:if='{{index>7}}' wx:for-index="index" wx:key="{{item.index}}">
-        <view class='item_size' bindtap="goList">
-          <view class="item_size_img"  style='width:88rpx'><image  src="{{item.Icon}}"></image></view>
-         <view class="item_size_text"> <text >{{item.Name}}</text></view>
-       </view>
-      </block> 
+      <!-- user_icon_item每一行 -->
+      <view class='user_icon_item'>
+        <block wx:for="{{navigatorItems}}" wx:if='{{index < 4}}' wx:for-index="index" wx:key="{{item.index}}">
+
+          <view class='item_size' bindtap="goList">
+            <view class="item_size_img" style='width:88rpx' bindtap='myOrderBtn' data-index='{{index}}'>
+              <image src="{{item.Icon}}"></image>
+            </view>
+            <view class="item_size_text">
+              <text>{{item.Name}}</text>
+            </view>
+          </view>
+        </block>
       </view>
+      <!-- 第二行遍历 -->
+      <view class='user_icon_item'>
+        <block wx:for="{{navigatorItems}}" wx:if='{{index > 3&&index <8}}' wx:for-index="index" wx:key="{{item.index}}">
+          <view class='item_size' bindtap="goList">
+            <view class="item_size_img" style='width:88rpx' bindtap='myOrderBtn' data-index='{{index}}'>
+              <image src="{{item.Icon}}"></image>
+            </view>
+            <view class="item_size_text">
+              <text>{{item.Name}}</text>
+            </view>
+          </view>
+        </block>
       </view>
+      <!-- 第三行遍历 -->
+      <view class='user_icon_item item_item_no'>
+        <block wx:for="{{navigatorItems}}" wx:if='{{index>7}}' wx:for-index="index" wx:key="{{item.index}}">
+          <view class='item_size' bindtap="goList">
+            <view class="item_size_img" style='width:88rpx' bindtap='myOrderBtn' data-index='{{index}}'>
+              <image src="{{item.Icon}}"></image>
+            </view>
+            <view class="item_size_text">
+              <text>{{item.Name}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
     <!-- 充值有礼 -->
-  <view class='recharge'>
-  <text>充值有礼</text>
-  </view>
+    <!-- <view class='recharge'>
+      <text>充值有礼</text>
+    </view> -->
   </view>
 
 </view>

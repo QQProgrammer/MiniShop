@@ -7,7 +7,7 @@ Page({
   shelf: function () {//货架码
     console.log("点击货架码")
     wx.navigateTo({
-      url: 'shelf?sid=9'
+      url: 'shelf?sid=12'
     })
   },
   goods: function () {//商品码

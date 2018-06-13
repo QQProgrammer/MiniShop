@@ -16,11 +16,11 @@ Page({
     motto: '我要去我的页面',
     userInfo: {},
     hasUserInfo: false,
-    userTel: app.globalData.userTel,
+    isCover: false,//遮罩层
+    userTel: true,
     nocancel: false,
     latitude: '',
     longitude: '',
-    isCover: 'true',//遮罩层
     userCode: '',//用户验证码
     userNumber: '',//用户手机号
     sendCodeMsg: '发送验证码',//发送验证码
@@ -28,16 +28,19 @@ Page({
     disabled: false,//可点击
     code: '',
     uuid: '',
-    valueinput: ''
+    valueinput: '',
+    imageUser: '',
+    disabled: false,
+    intervalTime: ''
   },
   goToRecharge: function () {//点击充值有礼
-    console.log("点击充值有礼")
+
   },
   goToShop: function () {//点击去购物
-    console.log("点击去购物")
+
   },
   goToFeedback: function () {//点击意见反馈
-    console.log("点击意见反馈")
+
   },
   toast: function () { //点击我的跳转
     wx.navigateTo({
@@ -46,7 +49,6 @@ Page({
   },
   sendCode: function (e) {//发送验证码
     var that = this;
-    console.log(that.data.userNumber)
     if (that.data.userNumber == '') {
       wx.showToast({
         title: '请输入手机号',
@@ -56,6 +58,29 @@ Page({
       })
       return false
     } else {
+      that.setData({
+        sendCodeMsg: 60 + '秒',
+        disabled: true
+      })
+      // 点击之后倒数验证码
+      var currentTime = that.data.currentTime
+      var intervalTime = setInterval(function () {
+        currentTime--;
+        that.setData({
+          sendCodeMsg: currentTime + '秒',
+          disabled: true,
+          intervalTime: intervalTime
+        })
+        if (currentTime <= 0) {
+          clearInterval(intervalTime)
+          that.setData({
+            sendCodeMsg: '发送验证码',
+            currentTime: 60,
+            disabled: false,
+            intervalTime: intervalTime
+          })
+        }
+      }, 1000)
       // 获取验证码接口，传手机号给后台，发送短信，自动赋值给input；
       wx.request({
         url: textUrl + 'user/registerCode',
@@ -77,27 +102,10 @@ Page({
           }
         }
       })
-      // 点击之后倒数验证码
-      var currentTime = that.data.currentTime
-      var interval = setInterval(function () {
-        currentTime--;
-        that.setData({
-          sendCodeMsg: currentTime + '秒',
-          disabled: false
-        })
-        if (currentTime <= 0) {
-          clearInterval(interval)
-          that.setData({
-            sendCodeMsg: '发送验证码',
-            currentTime: 60,
-            disabled: false
-          })
-        }
-      }, 1000)
+
     }
   },
   close: function () {//注册关闭
-
     wx.navigateBack({
       delta: 0
     })
@@ -127,7 +135,7 @@ Page({
       data: {
         phone: that.data.userNumber,
         code: that.data.code,
-        openid: ' ',
+        // openid: ' ',
         incode: that.data.userCode
       },
       method: "POST",
@@ -141,16 +149,21 @@ Page({
       },
       success: function (res) {
         if (res.data.arg == null) {
+          var intervalTime = that.data.intervalTime
+          clearInterval(intervalTime)
           that.setData({
             userTel: false,
             isCover: true,
-            valueinput: ''
+            valueinput: '',
+            sendCodeMsg: '发送验证码',
+            currentTime: 60,
+            disabled: false,
+            userNumber: ''
           })
           wx.showModal({
             title: '提示',
             content: res.data.content
           })
-
         } else {
           wx.setStorage({ key: "userTel", data: that.data.userNumber }) //信息存本地
           wx.setStorage({ key: "userarg", data: res.data.arg }) //信息存本地
@@ -161,7 +174,6 @@ Page({
         }
       },
       fail: function (res) {
-        console.log(res)
       }
     })
   }, //用户名和密码输入框事件
@@ -183,45 +195,36 @@ Page({
   },
   toAdsense: function (e) {
     var item = e.currentTarget.dataset.url;
-    console.log(item)
     wx.navigateTo({
       url: '../index/webView?url=' + item
     })
   },
   indexScan: function () {//扫一扫
-    wx.navigateTo({
-      url: '../scan/scan'
-    })
+    // wx.navigateTo({//测试用
+    //   url: '../scan/scan'
+    // })
+    //下方为正确扫码
     wx.scanCode({
       onlyFromCamera: true,
       success: (res) => {
-        console.log(res.result)
         var url = res.result
-        console.log(url)
         if (url.indexOf("?") != -1) {
           var str = url.split("?");
-          console.log(str[1])
           if (str[1].indexOf("=") != -1) {
             var Request = str[1].split("=");
-            console.log(Request)
             if (Request[0] == 'pid') {
-              console.log(Request[1])
               wx.navigateTo({
-                url: '../scan/cart?typeCart=2&&pid=Request[1]'
+                url: '../scan/cart?typeCart=2&&pid='+Request[1]
               })
             } else if (Request[0] == 'sid') {
-              console.log(Request[1])
               wx.navigateTo({
-                url: '../scan/shelf?sid=Request[1]'
+                url: '../scan/shelf?sid='+Request[1]
               })
             }
           }
-
         }
-
       }
     })
-
   },
   onLoad: function () {
     var that = this;
@@ -229,27 +232,24 @@ Page({
       {
         key: 'userInfo',
         success: function (res) {
-          console.log("授权了")
           if (res.data) {
-            // that.setData({//本地存储给data赋值
-            //   userInfo: res.data,
-            //   hasUserInfo: true
-            // })
+            var imageUrlJson = JSON.parse(res.data)
+            that.setData({//本地存储给data赋值
+              imageUser: imageUrlJson.avatarUrl,
+            })
           }
         },
         fail: function (res) {
-          console.log("没授权")
           wx.redirectTo({//跳转到授权页面
             url: '/pages/toLogin/toLogin'
           })
         },
-        complete: function (res) { console.log(res) }
+        complete: function (res) { }
       }),
       wx.getStorage(
         {
           key: 'userTel',
           success: function (res) {
-            console.log("有信息")
             if (res.data) {
               that.setData({//本地存储给data赋值
                 userTel: res.data,
@@ -258,14 +258,18 @@ Page({
             }
           },
           fail: function (res) {
+            that.setData({//本地存储给data赋值
+              userTel: false,
+              isCover: true
+            })
           },
-          complete: function (res) { console.log(res) }
+          complete: function (res) { }
         }),
       wx.getStorage(
         {
           key: 'code',
           success: function (res) {
-            console.log("有信息")
+
             if (res.data) {
               that.setData({//本地存储给data赋值
                 code: res.data,
@@ -274,13 +278,112 @@ Page({
           },
           fail: function (res) {
           },
-          complete: function (res) { console.log(res) }
+          complete: function (res) { }
         })
     var uuid = wx.getStorageSync('userarg') || ''
     that.setData({//本地存储给data赋值
       uuid: uuid
     })
 
+    // 下方为进入首页有缓存清空
+    var cartItems = wx.getStorageSync('cartItems')
+    if (cartItems) {
+      wx.removeStorage({
+        key: 'cartItems',
+        success: function (res) {
+        }
+      })
+    }
+    var amount = wx.getStorageSync('amount')
+    if (amount) {
+      wx.removeStorage({
+        key: 'amount',
+        success: function (res) {
+        }
+      })
+    }
+    var carts = wx.getStorageSync('carts')
+    if (carts) {
+      wx.removeStorage({
+        key: 'carts',
+        success: function (res) {
+        }
+      })
+    }
+    var pay_money = wx.getStorageSync('pay_money')
+    if (pay_money) {
+      wx.removeStorage({
+        key: 'pay_money',
+        success: function (res) {
+        }
+      })
+    }
+    var is_coupon_allowed = wx.getStorageSync('is_coupon_allowed')
+    if (is_coupon_allowed) {
+      wx.removeStorage({
+        key: 'is_coupon_allowed',
+        success: function (res) {
+        }
+      })
+    }
+
+    var smsorderid = wx.getStorageSync('smsorderid')
+    if (smsorderid) {
+      wx.removeStorage({
+        key: 'smsorderid',
+        success: function (res) {
+        }
+      })
+    }
+    var useCoupon = wx.getStorageSync('useCoupon')
+    if (useCoupon) {
+      wx.removeStorage({
+        key: 'useCoupon',
+        success: function (res) {
+        }
+      })
+    }
+    var manAmount = wx.getStorageSync('manAmount')
+    if (manAmount) {
+      wx.removeStorage({
+        key: 'manAmount',
+        success: function (res) {
+        }
+      })
+    }
+    var sid = wx.getStorageSync('sid')
+    if (sid) {
+      wx.removeStorage({
+        key: 'sid',
+        success: function (res) {
+        }
+      })
+    }
+    var bid = wx.getStorageSync('bid')
+    if (bid) {
+      wx.removeStorage({
+        key: 'bid',
+        success: function (res) {
+        }
+      })
+    }
+    var payData = wx.getStorageSync('payData')
+    if (payData) {
+      wx.removeStorage({
+        key: 'payData',
+        success: function (res) {
+        }
+      })
+    }
+
+    var couponTitle = wx.getStorageSync('couponTitle')
+    if (couponTitle) {
+      wx.removeStorage({
+        key: 'couponTitle',
+        success: function (res) {
+        }
+      })
+    }
   },
   onShow: function () {
     // 获取广告
@@ -304,7 +407,6 @@ Page({
         that.setData({
           imgUrlsBanner: arrImg
         });
-        console.log(res)
         if (res == null || res.data == null) {
           reject(new Error('网络请求失败'))
         }
@@ -333,7 +435,7 @@ Page({
         that.setData({
           imgUrlsAct: arrImg
         });
-        console.log(res)
+
         if (res == null || res.data == null) {
           reject(new Error('网络请求失败'))
         }
